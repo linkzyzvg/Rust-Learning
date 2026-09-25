@@ -1,0 +1,35 @@
+name: Rust Continuous Integration
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  test:
+    name: Build and Test Workspace
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Pull down the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Automatically install Rust stable and manage smart build caching
+      - name: Setup Rust Toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          components: clippy, rustfmt
+
+      # 3. Verify formatting layout passes standard guidelines
+      - name: Check Formatting
+        run: cargo fmt --all -- --check
+
+      # 4. Compile everything in the entire workspace to check for code issues
+      - name: Run Linter (Clippy)
+        run: cargo clippy --workspace --all-targets -- -D warnings
+
+      # 5. Run tests for all workspace items
+      - name: Run Tests
+        run: cargo test --workspace

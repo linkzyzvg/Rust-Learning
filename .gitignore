@@ -1,0 +1,9 @@
+# Ignore Cargo build artifacts
+**/target/
+
+# Ignore local Zed editor state
+**/.zed/settings.json
+!**/.zed/tasks.json
+
+# All other files and directories we want ignored
+**/.env
