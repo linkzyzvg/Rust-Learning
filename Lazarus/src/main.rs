@@ -5,10 +5,11 @@ type Error = Box<dyn std::error::Error + Send + Sync>;
 
 #[tokio::main]
 async fn main() {
+    dotenvy::dotenv().expect("Failed to load .env file");
     let token = std::env::var("DISCORD_TOKEN").expect("Missing DISCORD_TOKEN");
     let intents = serenity::GatewayIntents::all();
 
-    let framework: poise::Framework<Data, Error> = poise::Framework::builder() // <-- Add your types here
+    let framework: poise::Framework<Data, Error> = poise::Framework::builder()
         .options(poise::FrameworkOptions {
             commands: vec![],
             ..Default::default()
