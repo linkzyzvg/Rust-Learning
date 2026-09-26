@@ -3,6 +3,10 @@
 version = 4
 
 [[package]]
+name = "Calculator"
+version = "0.1.0"
+
+[[package]]
 name = "Hello-World"
 version = "0.1.0"
 

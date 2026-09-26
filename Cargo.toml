@@ -1,7 +1,8 @@
 [workspace]
 resolver = "3"
-members = [
-    "Hello World", "Lazarus",
+members = ["Calculator",
+    "Hello World",
+    "Lazarus",
     "Temp Converter",
 ]
 
