@@ -1,6 +1,7 @@
 use poise::serenity_prelude as serenity;
 use std::env;
 
+mod commands;
 mod events;
 
 struct Data {}
